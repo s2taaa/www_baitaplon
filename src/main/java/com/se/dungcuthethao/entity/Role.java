@@ -28,13 +28,13 @@ public class Role implements Serializable{
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@JsonProperty(access = Access.WRITE_ONLY)
-	private int id;
+	private Long id;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name = "role")
 	private RoleEnum role;
 
-	public Role(int id, RoleEnum role) {
+	public Role(Long id, RoleEnum role) {
 		super();
 		this.id = id;
 		this.role = role;
@@ -49,11 +49,11 @@ public class Role implements Serializable{
 		super();
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

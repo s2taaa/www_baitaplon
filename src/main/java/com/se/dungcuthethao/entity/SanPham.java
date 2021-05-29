@@ -22,10 +22,10 @@ public class SanPham implements Serializable{
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	
-	@Column(name = "tenSP")
-	private String tenSP;
+	@Column(name = "ten")
+	private String ten;
 	
 	@Column(name = "soLuong")
 	private int soLuong;
@@ -33,51 +33,53 @@ public class SanPham implements Serializable{
 	@Column(name = "donGia")
 	private float donGia;
 	
-	@Column(name = "loaiSP")
-	private String loaiSP;
+	@Column(name = "loai")
+	private String loai;
 	
-	@Column(name = "kichThuoc")
-	private String kichThuoc;
+	@Column(name = "kichCo")
+	private String kichCo;
 	
 	@Column(name = "mauSac")
 	private String mauSac;
 	
-	@Column(name = "xuatSu")
-	private String xuatSu;
+	@Column(name = "xuatXu")
+	private String xuatXu;
 	
 	@Column(name = "images")
 	private String images;
 	
 	@ManyToOne
-	@JoinColumn(name = "idNhaCungCap")
+	@JoinColumn(name = "nhaCungCapID")
 	private NhaCungCap nhaCungCap;
 
-	public SanPham(int id, String tenSP, int soLuong, float donGia, String loaiSP, String kichThuoc, String mauSac,
-			String xuatSu, String images, NhaCungCap nhaCungCap) {
+
+	public SanPham(Long id, String ten, int soLuong, float donGia, String loai, String kichCo, String mauSac,
+			String xuatXu, String images, NhaCungCap nhaCungCap) {
 		super();
 		this.id = id;
-		this.tenSP = tenSP;
+		this.ten = ten;
 		this.soLuong = soLuong;
 		this.donGia = donGia;
-		this.loaiSP = loaiSP;
-		this.kichThuoc = kichThuoc;
+		this.loai = loai;
+		this.kichCo = kichCo;
 		this.mauSac = mauSac;
-		this.xuatSu = xuatSu;
+		this.xuatXu = xuatXu;
 		this.images = images;
 		this.nhaCungCap = nhaCungCap;
 	}
 
-	public SanPham(int id, String tenSP, int soLuong, float donGia, String loaiSP, String kichThuoc, String mauSac,
-			String xuatSu, String images) {
+
+	public SanPham(Long id, String ten, int soLuong, float donGia, String loai, String kichCo, String mauSac,
+			String xuatXu, String images) {
 		super();
 		this.id = id;
-		this.tenSP = tenSP;
+		this.ten = ten;
 		this.soLuong = soLuong;
 		this.donGia = donGia;
-		this.loaiSP = loaiSP;
-		this.kichThuoc = kichThuoc;
+		this.loai = loai;
+		this.kichCo = kichCo;
 		this.mauSac = mauSac;
-		this.xuatSu = xuatSu;
+		this.xuatXu = xuatXu;
 		this.images = images;
 	}
 
@@ -85,92 +87,114 @@ public class SanPham implements Serializable{
 		super();
 	}
 
-	public int getId() {
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public String getTenSP() {
-		return tenSP;
+
+	public String getTen() {
+		return ten;
 	}
 
-	public void setTenSP(String tenSP) {
-		this.tenSP = tenSP;
+
+	public void setTen(String ten) {
+		this.ten = ten;
 	}
+
 
 	public int getSoLuong() {
 		return soLuong;
 	}
 
+
 	public void setSoLuong(int soLuong) {
 		this.soLuong = soLuong;
 	}
+
 
 	public float getDonGia() {
 		return donGia;
 	}
 
+
 	public void setDonGia(float donGia) {
 		this.donGia = donGia;
 	}
 
-	public String getLoaiSP() {
-		return loaiSP;
+
+	public String getLoai() {
+		return loai;
 	}
 
-	public void setLoaiSP(String loaiSP) {
-		this.loaiSP = loaiSP;
+
+	public void setLoai(String loai) {
+		this.loai = loai;
 	}
 
-	public String getKichThuoc() {
-		return kichThuoc;
+
+	public String getKichCo() {
+		return kichCo;
 	}
 
-	public void setKichThuoc(String kichThuoc) {
-		this.kichThuoc = kichThuoc;
+
+	public void setKichCo(String kichCo) {
+		this.kichCo = kichCo;
 	}
+
 
 	public String getMauSac() {
 		return mauSac;
 	}
 
+
 	public void setMauSac(String mauSac) {
 		this.mauSac = mauSac;
 	}
 
-	public String getXuatSu() {
-		return xuatSu;
+
+	public String getXuatXu() {
+		return xuatXu;
 	}
 
-	public void setXuatSu(String xuatSu) {
-		this.xuatSu = xuatSu;
+
+	public void setXuatXu(String xuatXu) {
+		this.xuatXu = xuatXu;
 	}
+
 
 	public String getImages() {
 		return images;
 	}
 
+
 	public void setImages(String images) {
 		this.images = images;
 	}
+
 
 	public NhaCungCap getNhaCungCap() {
 		return nhaCungCap;
 	}
 
+
 	public void setNhaCungCap(NhaCungCap nhaCungCap) {
 		this.nhaCungCap = nhaCungCap;
 	}
 
+
 	@Override
 	public String toString() {
-		return "SanPham [id=" + id + ", tenSP=" + tenSP + ", soLuong=" + soLuong + ", donGia=" + donGia + ", loaiSP="
-				+ loaiSP + ", kichThuoc=" + kichThuoc + ", mauSac=" + mauSac + ", xuatSu=" + xuatSu + ", images="
-				+ images + "]";
+		return "SanPham [id=" + id + ", ten=" + ten + ", soLuong=" + soLuong + ", donGia=" + donGia + ", loai=" + loai
+				+ ", kichCo=" + kichCo + ", mauSac=" + mauSac + ", xuatXu=" + xuatXu + ", images=" + images + "]";
 	}
+
+	
 	
 	
 }

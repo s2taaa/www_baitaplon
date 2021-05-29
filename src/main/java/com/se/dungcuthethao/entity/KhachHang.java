@@ -25,66 +25,70 @@ public class KhachHang implements Serializable{
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	
-	@Column(name = "tenKH")
-	private String tenKH;
+	@Column(name = "ten")
+	private String ten;
 	
 	@Column(name = "email")
 	private String email;
 	
-	@Column(name = "soDienThoai")
-	private String soDienThoai;
+	@Column(name = "sdt")
+	private String sdt;
 	
-	@Column(name = "loaiKH")
-	private String loaiKH;
+	@Column(name = "loai")
+	private String loai;
 	
 	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "IDTaiKhoan")
+	@JoinColumn(name = "taiKhoanID")
 	private TaiKhoan taiKhoan;
 
-	public KhachHang(int id, String tenKH, String email, String soDienThoai, String loaiKH, TaiKhoan taiKhoan) {
+
+	
+	public KhachHang(Long id, String ten, String email, String sdt, String loai, TaiKhoan taiKhoan) {
 		super();
 		this.id = id;
-		this.tenKH = tenKH;
+		this.ten = ten;
 		this.email = email;
-		this.soDienThoai = soDienThoai;
-		this.loaiKH = loaiKH;
+		this.sdt = sdt;
+		this.loai = loai;
 		this.taiKhoan = taiKhoan;
 	}
-	
-	public KhachHang(int id, String tenKH, String email, String soDienThoai, String loaiKH) {
+
+	public KhachHang(Long id, String ten, String email, String sdt, String loai) {
 		super();
 		this.id = id;
-		this.tenKH = tenKH;
+		this.ten = ten;
 		this.email = email;
-		this.soDienThoai = soDienThoai;
-		this.loaiKH = loaiKH;
+		this.sdt = sdt;
+		this.loai = loai;
 	}
 
 	public KhachHang() {
 		super();
-		this.tenKH = "Không xác định";
+		this.ten = "Không xác định";
 		this.email = "Chưa có email";
-		this.soDienThoai = "Chưa có số điện thoại";
-		this.loaiKH = "cơ bản";
+		this.sdt = "Chưa có số điện thoại";
+		this.loai = "cơ bản";
 	}
 
-	public int getId() {
+	
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public String getTenKH() {
-		return tenKH;
+	public String getTen() {
+		return ten;
 	}
 
-	public void setTenKH(String tenKH) {
-		this.tenKH = tenKH;
+	public void setTen(String ten) {
+		this.ten = ten;
 	}
 
 	public String getEmail() {
@@ -95,20 +99,20 @@ public class KhachHang implements Serializable{
 		this.email = email;
 	}
 
-	public String getSoDienThoai() {
-		return soDienThoai;
+	public String getSdt() {
+		return sdt;
 	}
 
-	public void setSoDienThoai(String soDienThoai) {
-		this.soDienThoai = soDienThoai;
+	public void setSdt(String sdt) {
+		this.sdt = sdt;
 	}
 
-	public String getLoaiKH() {
-		return loaiKH;
+	public String getLoai() {
+		return loai;
 	}
 
-	public void setLoaiKH(String loaiKH) {
-		this.loaiKH = loaiKH;
+	public void setLoai(String loai) {
+		this.loai = loai;
 	}
 
 	public TaiKhoan getTaiKhoan() {
@@ -119,17 +123,18 @@ public class KhachHang implements Serializable{
 		this.taiKhoan = taiKhoan;
 	}
 
+	
+
 	@Override
 	public String toString() {
-		return "KhachHang [id=" + id + ", tenKH=" + tenKH + ", email=" + email + ", soDienThoai=" + soDienThoai
-				+ ", loaiKH=" + loaiKH + "]";
+		return "KhachHang [id=" + id + ", ten=" + ten + ", email=" + email + ", sdt=" + sdt + ", loai=" + loai + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
@@ -142,9 +147,15 @@ public class KhachHang implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		KhachHang other = (KhachHang) obj;
-		if (id != other.id)
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}
+
+
+
 	
 }

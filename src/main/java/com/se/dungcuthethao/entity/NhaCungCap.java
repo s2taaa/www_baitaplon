@@ -21,26 +21,28 @@ public class NhaCungCap implements Serializable{
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	
-	@Column(name = "tenNCC")
-	private String tenNCC;
+	@Column(name = "ten")
+	private String ten;
 	
 	@Column(name = "diaChi")
 	private String diaChi;
 	
-	@Column(name = "soDienThoai")
-	private String soDienThoai;
+	@Column(name = "sdt")
+	private String sdt;
 	
 	@Column(name = "email")
 	private String email;
 
-	public NhaCungCap(int id, String tenNCC, String diaChi, String soDienThoai, String email) {
+	
+
+	public NhaCungCap(Long id, String ten, String diaChi, String sdt, String email) {
 		super();
 		this.id = id;
-		this.tenNCC = tenNCC;
+		this.ten = ten;
 		this.diaChi = diaChi;
-		this.soDienThoai = soDienThoai;
+		this.sdt = sdt;
 		this.email = email;
 	}
 
@@ -48,20 +50,20 @@ public class NhaCungCap implements Serializable{
 		super();
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public String getTenNCC() {
-		return tenNCC;
+	public String getTen() {
+		return ten;
 	}
 
-	public void setTenNCC(String tenNCC) {
-		this.tenNCC = tenNCC;
+	public void setTen(String ten) {
+		this.ten = ten;
 	}
 
 	public String getDiaChi() {
@@ -72,12 +74,12 @@ public class NhaCungCap implements Serializable{
 		this.diaChi = diaChi;
 	}
 
-	public String getSoDienThoai() {
-		return soDienThoai;
+	public String getSdt() {
+		return sdt;
 	}
 
-	public void setSoDienThoai(String soDienThoai) {
-		this.soDienThoai = soDienThoai;
+	public void setSdt(String sdt) {
+		this.sdt = sdt;
 	}
 
 	public String getEmail() {
@@ -90,9 +92,12 @@ public class NhaCungCap implements Serializable{
 
 	@Override
 	public String toString() {
-		return "NhaCungCap [id=" + id + ", tenNCC=" + tenNCC + ", diaChi=" + diaChi + ", soDienThoai=" + soDienThoai
-				+ ", email=" + email + "]";
+		return "NhaCungCap [id=" + id + ", ten=" + ten + ", diaChi=" + diaChi + ", sdt=" + sdt + ", email=" + email
+				+ "]";
 	}
+
+	
+	
 	
 	
 }

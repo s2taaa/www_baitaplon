@@ -26,7 +26,7 @@ public class ChiTietHoaDon implements Serializable{
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	
 	@Column(name = "donGia")
 	private float donGia;
@@ -36,22 +36,22 @@ public class ChiTietHoaDon implements Serializable{
 	
 	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "IDHoaDon")
+	@JoinColumn(name = "hoaDonID")
 	private HoaDon hoaDon;
 	
 	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-	@JoinColumn(name = "IDSanPham")
+	@JoinColumn(name = "sanPhamID")
 	private SanPham sanPham;
 
-	public ChiTietHoaDon(int id, float donGia, int soLuong) {
+	public ChiTietHoaDon(Long id, float donGia, int soLuong) {
 		super();
 		this.id = id;
 		this.donGia = donGia;
 		this.soLuong = soLuong;
 	}
 	
-	public ChiTietHoaDon(int id, float donGia, int soLuong, HoaDon hoaDon, SanPham sanPham) {
+	public ChiTietHoaDon(Long id, float donGia, int soLuong, HoaDon hoaDon, SanPham sanPham) {
 		super();
 		this.id = id;
 		this.donGia = donGia;
@@ -64,11 +64,13 @@ public class ChiTietHoaDon implements Serializable{
 		super();
 	}
 
-	public int getId() {
+	
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

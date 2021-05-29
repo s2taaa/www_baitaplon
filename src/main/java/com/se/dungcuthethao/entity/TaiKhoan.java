@@ -32,8 +32,9 @@ public class TaiKhoan implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 
 	@Column(name = "userName")
 	private String username;
@@ -48,7 +49,7 @@ public class TaiKhoan implements Serializable {
 
 	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
 			CascadeType.REFRESH })
-	@JoinTable(name = "TaiKhoan_role", joinColumns = @JoinColumn(name = "TaiKhoanID"), inverseJoinColumns = @JoinColumn(name = "RoleID"))
+	@JoinTable(name = "TaiKhoan_role", joinColumns = @JoinColumn(name = "taiKhoanID"), inverseJoinColumns = @JoinColumn(name = "roleID"))
 	private Set<Role> roles;
 
 	@JsonIgnore
@@ -78,11 +79,11 @@ public class TaiKhoan implements Serializable {
 //		this.enable = enable;
 //	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

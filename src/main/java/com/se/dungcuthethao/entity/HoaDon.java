@@ -19,7 +19,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
-import com.se.dungcuthethao.entity.enumEntity.PaymentMethodEnum;
+import com.se.dungcuthethao.entity.enumEntity.ThanhToan;
 import com.se.dungcuthethao.entity.enumEntity.StatusEnum;
 
 @Entity
@@ -33,111 +33,136 @@ public class HoaDon implements Serializable{
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 
-	@Column(name = "orderDate")
-	private LocalDate orderDate;
-
-	@Enumerated(EnumType.STRING)
-	@Column(name = "payment_menthod")
-	private PaymentMethodEnum paymentMethod;
-
-	@Column(name = "ship_adress")
-	private String shipAdress;
+	@Column(name = "ngayDatHang")
+	private LocalDate ngayDatHang;
 
 	@Enumerated(EnumType.STRING)
-	@Column(name = "status")
-	private StatusEnum status;
+	@Column(name = "thanhToan")
+	private ThanhToan thanhToan;
 
-	@Column(name = "total")
-	private float total;
+	@Column(name = "diaChiGiaoHang")
+	private String diaChiGiaoHang;
+
+	@Enumerated(EnumType.STRING)
+	@Column(name = "trangThai")
+	private StatusEnum trangThai;
+
+	@Column(name = "tong")
+	private float tong;
 
 	@OneToMany(mappedBy = "hoaDon", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<ChiTietHoaDon> chiTietHoaDons;
 
 	@ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
-	@JoinColumn(name = "IDKhachHang")
+	@JoinColumn(name = "khachHangID")
 	private KhachHang khachHang;
 
-	public HoaDon(int id, LocalDate orderDate, PaymentMethodEnum paymentMethod, String shipAdress, StatusEnum status,
-			float total) {
+	public HoaDon(Long id, LocalDate ngayDatHang, ThanhToan thanhToan, String diaChiGiaoHang, StatusEnum trangThai,
+			float tong) {
 		super();
 		this.id = id;
-		this.orderDate = orderDate;
-		this.paymentMethod = paymentMethod;
-		this.shipAdress = shipAdress;
-		this.status = status;
-		this.total = total;
+		this.ngayDatHang = ngayDatHang;
+		this.thanhToan = thanhToan;
+		this.diaChiGiaoHang = diaChiGiaoHang;
+		this.trangThai = trangThai;
+		this.tong = tong;
 	}
 	
-	
-	public HoaDon(int id, LocalDate orderDate, PaymentMethodEnum paymentMethod, String shipAdress, StatusEnum status,
-			float total, List<ChiTietHoaDon> chiTietHoaDons, KhachHang khachHang) {
+
+
+	public HoaDon(Long id, LocalDate ngayDatHang, ThanhToan thanhToan, String diaChiGiaoHang, StatusEnum trangThai,
+			float tong, List<ChiTietHoaDon> chiTietHoaDons, KhachHang khachHang) {
 		super();
 		this.id = id;
-		this.orderDate = orderDate;
-		this.paymentMethod = paymentMethod;
-		this.shipAdress = shipAdress;
-		this.status = status;
-		this.total = total;
+		this.ngayDatHang = ngayDatHang;
+		this.thanhToan = thanhToan;
+		this.diaChiGiaoHang = diaChiGiaoHang;
+		this.trangThai = trangThai;
+		this.tong = tong;
 		this.chiTietHoaDons = chiTietHoaDons;
 		this.khachHang = khachHang;
 	}
 
 
+
 	public HoaDon() {
 		super();
 	}
-
-	public int getId() {
+	
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+
+
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public LocalDate getOrderDate() {
-		return orderDate;
+
+
+	public LocalDate getNgayDatHang() {
+		return ngayDatHang;
 	}
 
-	public void setOrderDate(LocalDate orderDate) {
-		this.orderDate = orderDate;
+
+
+	public void setNgayDatHang(LocalDate ngayDatHang) {
+		this.ngayDatHang = ngayDatHang;
 	}
 
-	public PaymentMethodEnum getPaymentMethod() {
-		return paymentMethod;
+
+
+	public ThanhToan getThanhToan() {
+		return thanhToan;
 	}
 
-	public void setPaymentMethod(PaymentMethodEnum paymentMethod) {
-		this.paymentMethod = paymentMethod;
+
+
+	public void setThanhToan(ThanhToan thanhToan) {
+		this.thanhToan = thanhToan;
 	}
 
-	public String getShipAdress() {
-		return shipAdress;
+
+
+	public String getDiaChiGiaoHang() {
+		return diaChiGiaoHang;
 	}
 
-	public void setShipAdress(String shipAdress) {
-		this.shipAdress = shipAdress;
+
+
+	public void setDiaChiGiaoHang(String diaChiGiaoHang) {
+		this.diaChiGiaoHang = diaChiGiaoHang;
 	}
 
-	public StatusEnum getStatus() {
-		return status;
+
+
+	public StatusEnum getTrangThai() {
+		return trangThai;
 	}
 
-	public void setStatus(StatusEnum status) {
-		this.status = status;
+
+
+	public void setTrangThai(StatusEnum trangThai) {
+		this.trangThai = trangThai;
 	}
 
-	public float getTotal() {
-		return total;
+
+
+	public float getTong() {
+		return tong;
 	}
 
-	public void setTotal(float total) {
-		this.total = total;
+
+
+	public void setTong(float tong) {
+		this.tong = tong;
 	}
-	
-	
+
+
+
 	public List<ChiTietHoaDon> getChiTietHoaDons() {
 		return chiTietHoaDons;
 	}
@@ -158,24 +183,27 @@ public class HoaDon implements Serializable{
 	}
 
 
+	
 	@Override
 	public String toString() {
-		return "HoaDon [id=" + id + ", orderDate=" + orderDate + ", paymentMethod=" + paymentMethod + ", shipAdress="
-				+ shipAdress + ", status=" + status + ", total=" + total + "]";
+		return "HoaDon [id=" + id + ", ngayDatHang=" + ngayDatHang + ", thanhToan=" + thanhToan + ", diaChiGiaoHang="
+				+ diaChiGiaoHang + ", trangThai=" + trangThai + ", tong=" + tong + "]";
 	}
+
+
 
 	@PrePersist
 	public void prePersist() {
-		orderDate = LocalDate.now();
-		status = StatusEnum.PENDING;
+		ngayDatHang = LocalDate.now();
+		trangThai = StatusEnum.PENDING;
 		sumTotal();
 	}
 
 	public Double sumTotal() {
-		total = 0;
+		tong = 0;
 		if (!chiTietHoaDons.isEmpty()) {
-			chiTietHoaDons.forEach(detail -> total += detail.tongHoaDon());
+			chiTietHoaDons.forEach(detail -> tong += detail.tongHoaDon());
 		}
-		return (double) total;
+		return (double) tong;
 	}
 }

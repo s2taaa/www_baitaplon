@@ -1,5 +1,5 @@
 package com.se.dungcuthethao.entity.enumEntity;
 
-public enum PaymentMethodEnum {
+public enum ThanhToan {
 	STORE, COD
 }
